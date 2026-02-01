@@ -1,0 +1,280 @@
+/* ============================================
+   O'Brien 2.5D Design — Stylesheet
+   ============================================ */
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Andale Mono', 'Courier New', monospace;
+    background-color: #2e5a2e;
+    background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(55, 89, 55, 0.6) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(70, 110, 60, 0.4) 0%, transparent 50%);
+    color: #3a3225;
+    padding: 0 5%;
+}
+
+/* --- Main wrapper --- */
+.main-content-block {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+/* --- Header / Banner --- */
+.site-header {
+    width: 100%;
+    text-align: center;
+    padding: 24px 0 4px;
+}
+
+.site-title {
+    font-family: 'Andale Mono', 'Courier New', monospace;
+    font-size: clamp(1.6rem, 4.5vw, 2.8rem);
+    letter-spacing: 0.12em;
+    color: #f5e69f;
+    text-shadow:
+        1px 1px 0 #2e4a2e,
+        2px 2px 0 rgba(0,0,0,0.25);
+    margin-top: 12px;
+    margin-bottom: 4px;
+}
+
+/* --- Content card --- */
+.content-box {
+    width: 100%;
+    padding-top: 0;
+    background-color: #f5e69f;
+    border: 2px solid #1a1a1a;
+    border-radius: 0 0 4px 4px;
+    overflow: hidden;
+    margin-bottom: 32px;
+}
+
+/* --- Navigation --- */
+.nav-bar {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background-color: #375f37;
+    border-bottom: 2px solid #1a1a1a;
+}
+
+.nav-bar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 8px;
+    text-decoration: none;
+    color: #faebd7;
+    font-weight: bold;
+    font-size: clamp(0.55rem, 1.4vw, 0.8rem);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border-right: 1px solid rgba(250, 235, 215, 0.3);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-bar a:last-child {
+    border-right: none;
+}
+
+.nav-bar a:hover,
+.nav-bar a.active {
+    background-color: #2e4a2e;
+    color: #f5e69f;
+}
+
+/* --- About page tiles --- */
+.about-section {
+    display: flex;
+    gap: 24px;
+    padding: 28px 28px 32px;
+    align-items: flex-start;
+}
+
+.about-photo {
+    flex: 0 0 28%;
+    min-width: 0;
+}
+
+.about-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 2px solid #3a3225;
+    border-radius: 3px;
+}
+
+.about-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.about-text p {
+    font-size: clamp(0.8rem, 1.6vw, 0.95rem);
+    line-height: 1.75;
+    color: #3a3225;
+}
+
+/* --- Gallery (Photography page) --- */
+.gallery-container {
+    padding: 24px;
+    max-width: 100%;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.gallery-item {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 3px;
+    border: 2px solid #3a3225;
+    background: #e8d88e;
+}
+
+.gallery-thumbnail {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.gallery-item:hover .gallery-thumbnail {
+    transform: scale(1.06);
+    filter: brightness(1.05);
+}
+
+/* --- Modal (lightbox) --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.modal.visible {
+    display: flex;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 88vh;
+    display: block;
+    border-radius: 3px;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+    animation: modalFadeIn 0.25s ease;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+.close-modal {
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    color: #fff;
+    font-size: 2.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease;
+    z-index: 1001;
+}
+
+.close-modal:hover {
+    color: #f5e69f;
+}
+
+/* --- Placeholder page content --- */
+.placeholder-section {
+    padding: 48px 28px;
+    text-align: center;
+}
+
+.placeholder-section p {
+    font-size: 0.95rem;
+    color: #6b5e4a;
+    line-height: 1.7;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 768px) {
+    body {
+        padding: 0 3%;
+    }
+
+    .nav-bar {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-bar a {
+        border-right: none;
+        border-bottom: 1px solid rgba(250, 235, 215, 0.2);
+        padding: 11px 0;
+        letter-spacing: 0.15em;
+    }
+
+    .nav-bar a:last-child {
+        border-bottom: none;
+    }
+
+    .about-section {
+        flex-direction: column;
+        padding: 20px;
+        gap: 16px;
+    }
+
+    .about-photo {
+        flex: none;
+        width: 60%;
+        max-width: 260px;
+        margin: 0 auto;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .gallery-container {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-title {
+        letter-spacing: 0.06em;
+    }
+
+    .about-section {
+        padding: 16px;
+    }
+
+    .gallery-grid {
+        gap: 6px;
+    }
+}

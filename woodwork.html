@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Woodwork — O'Brien 2.5D Design</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-content-block">
+
+        <header class="site-header">
+            <h1 class="site-title">O'Brien 2.5D Design</h1>
+        </header>
+
+        <div class="content-box">
+            <nav class="nav-bar">
+                <a href="index.html">Home</a>
+                <a href="photography.html">Photography</a>
+                <a href="sketches.html">Sketches</a>
+                <a href="digital-art.html">Digital Art</a>
+                <a href="woodwork.html" class="active">Woodwork</a>
+            </nav>
+
+            <div class="gallery-container">
+                <div class="gallery-grid">
+
+                    <!-- Add woodwork photos here — see HOW-TO-ADD-PHOTOS.md -->
+                    <!--
+                    <div class="gallery-item">
+                        <img src="woodwork/FILENAME.jpg" alt="Description" class="gallery-thumbnail" loading="lazy">
+                    </div>
+                    -->
+
+                </div>
+            </div>
+
+            <!-- Lightbox modal -->
+            <div id="imageModal" class="modal">
+                <span class="close-modal">&times;</span>
+                <img class="modal-content" id="fullImage" alt="">
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('fullImage');
+        const closeBtn = document.querySelector('.close-modal');
+
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const thumb = item.querySelector('.gallery-thumbnail');
+                modalImg.src = thumb.src;
+                modalImg.alt = thumb.alt;
+                modal.classList.add('visible');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function closeModal() {
+            modal.classList.remove('visible');
+            document.body.style.overflow = '';
+        }
+
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', e => {
+            if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+</html>
