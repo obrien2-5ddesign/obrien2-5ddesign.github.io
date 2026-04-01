@@ -14,7 +14,7 @@ body {
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    font-family: 'Andale Mono', 'Courier New', monospace;
+    font-family: 'Georgia', serif, monospace;
     background-color: #2e5a2e;
     background-image:
         radial-gradient(ellipse at 20% 50%, rgba(55, 89, 55, 0.6) 0%, transparent 60%),
